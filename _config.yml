@@ -53,7 +53,7 @@ author:
 # Add links to the sidebar.
 menu:
   - title:             STUDY
-    url:               /example/
+    url:               /study/
     submenu:
       - title:         CS
         url:           /CS/
