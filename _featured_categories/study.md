@@ -3,12 +3,13 @@
 layout: list
 
 # The title of the tag's page.
-title: PS
+title: STUDY
 
 # The name of the tag, used in a post's front matter (e.g. tags: [<slug>]).
-slug: ps
+slug: study
 
-parent: study
+submenu: true
+
 # (Optional) Write a short (~150 characters) description of this featured tag.
 description: >
   This is a featured category, which have their own page.
