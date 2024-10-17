@@ -57,7 +57,7 @@ menu:
     submenu:
       - title:         CS
         url:           /CS/
-      - title:         Problem Solving
+      - title:         PS
         url:           /PS/         
   # - title:             Documentation
   #   url:               /docs/
