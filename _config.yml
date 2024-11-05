@@ -61,6 +61,8 @@ menu:
         url:           /ps/         
   # - title:             Documentation
   #   url:               /docs/
+  - title:             LIFE
+    url:               /life/
   - title:             About
     url:               /about/
 
