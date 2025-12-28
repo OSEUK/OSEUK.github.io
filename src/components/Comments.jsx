@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { useTheme } from '../contexts/ThemeContext';
 
-const Comments = ({ repo = 'your-username/myBlog' }) => {
+const Comments = ({ repo = 'oseuk/oseuk.github.io' }) => {
   const commentsRef = useRef(null);
   const { isDark } = useTheme();
 
