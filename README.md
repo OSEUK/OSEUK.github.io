@@ -99,6 +99,22 @@ Write your content here in Markdown...
 - `tags` (optional) - Array of tags
 - `excerpt` (optional) - Short description for post listings
 
+### **중요**: 포스트 파일 등록
+
+새 포스트를 추가한 후에는 **반드시** `src/utils/posts.js` 파일의 `POST_FILES` 배열에 파일명을 추가해야 합니다:
+
+```javascript
+const POST_FILES = [
+  'welcome-to-my-blog.md',
+  'getting-started-with-react.md',
+  'productivity-tips.md',
+  'css-best-practices.md',
+  'your-new-post.md',  // 새 파일 추가
+];
+```
+
+이 단계를 건너뛰면 새 포스트가 블로그에 표시되지 않습니다.
+
 ## Project Structure
 
 ```
@@ -176,46 +192,74 @@ Dark mode is automatically detected based on system preferences and can be toggl
 
 ## Deployment
 
-### Vercel (Recommended)
+### GitHub Pages (현재 설정)
+
+이 프로젝트는 GitHub Pages를 위해 최적화되어 있습니다.
+
+#### Windows에서 배포
+```bash
+npm run deploy:win
+# 또는
+deploy.bat
+```
+
+#### Mac/Linux에서 배포
+```bash
+npm run deploy
+# 또는
+bash deploy.sh
+```
+
+#### 수동 배포
+```bash
+# 1. 빌드
+npm run build
+
+# 2. worktree 생성
+git worktree add .deploy gh-pages
+
+# 3. 배포 디렉토리로 이동
+cd .deploy
+
+# 4. 기존 파일 삭제
+git rm -rf .
+git clean -fxd
+
+# 5. dist 폴더 내용 복사
+cp -r ../dist/* .
+cp ../dist/.nojekyll .
+
+# 6. 커밋 및 푸시
+git add -A
+git commit -m "Deploy to GitHub Pages"
+git push origin gh-pages --force
+
+# 7. 정리
+cd ..
+git worktree remove .deploy
+```
+
+#### GitHub Pages 설정
+
+1. GitHub repository 설정으로 이동: `Settings` → `Pages`
+2. Source를 **gh-pages** 브랜치로 선택
+3. Save 클릭
+4. 1-3분 후 https://oseuk.github.io/ 에서 확인
+
+### 기타 호스팅 옵션
+
+#### Vercel
 
 1. Push your code to GitHub
 2. Import your repository in Vercel
 3. Vercel will auto-detect Vite and deploy
 
-### Netlify
+#### Netlify
 
 1. Push your code to GitHub
 2. Create a new site in Netlify
 3. Build command: `npm run build`
 4. Publish directory: `dist`
-
-### GitHub Pages
-
-1. Install gh-pages:
-```bash
-npm install -D gh-pages
-```
-
-2. Add to package.json:
-```json
-"scripts": {
-  "predeploy": "npm run build",
-  "deploy": "gh-pages -d dist"
-}
-```
-
-3. Update `vite.config.js` to set the correct base:
-```js
-export default defineConfig({
-  base: '/your-repo-name/',
-  // ...
-})
-```
-
-4. Deploy:
-```bash
-npm run deploy
-```
 
 ## Performance
 
